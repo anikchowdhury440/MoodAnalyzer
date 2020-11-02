@@ -1,0 +1,2 @@
+Welcome to Mood Analyzer
+
