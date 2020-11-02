@@ -11,8 +11,12 @@ public class MoodAnalyzer {
 		this.moodMessage = moodMessage;
 	}
     
-	public String analyseMood() {
+	public String analyseMood() throws MoodAnalyzerException {
 		try {
+			if(moodMessage.length() == 0)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.ENTERD_EMPTY, "Don't pass empty value");
+            }
 			if(moodMessage.contains("Sad")) {
 				return "SAD";
 			}
@@ -21,7 +25,7 @@ public class MoodAnalyzer {
 			}
 		}
 		catch (NullPointerException e) {
-			return "HAPPY";
+			throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.ENTERD_NULL, "Don't pass null value");
 		}
 	}
 }
